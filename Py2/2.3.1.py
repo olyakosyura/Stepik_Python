@@ -52,6 +52,8 @@ class multifilter:
         # iterable - исходная последовательность
         # funcs - допускающие функции
         # judge - решающая функция
+        for i in funcs:
+            if i()
         
 
     def __iter__(self):
