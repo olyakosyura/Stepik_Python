@@ -52,10 +52,26 @@ class multifilter:
         # iterable - исходная последовательность
         # funcs - допускающие функции
         # judge - решающая функция
-        for i in funcs:
-            if i()
-        
+        self.it = iter(iterable)
+        self.funcs = funcs
+        self.judge = judge
 
     def __iter__(self):
         # возвращает итератор по результирующей последовательности
-        next 
+        return self
+    def __next__(self):
+        x = next(self.it)
+        pos = 0
+        neg = 0
+        for f in self.funcs:
+            if f(x):
+                pos += 1
+            else:
+                neg +=1
+        if self.judge(pos,neg):
+            return x
+        else:
+            return next(self)
+
+                
+   
